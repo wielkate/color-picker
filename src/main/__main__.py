@@ -1,16 +1,71 @@
-# This is a sample Python script.
+from flet import *
 
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
+from Circle import Circle
+from ColorDescription import ColorDescription
+from ColorName import ColorName
+from Card import Card
+from StartButton import StartButton
+from SavedButton import SavedButton
+from CloseButton import CloseButton
 
 
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
+def setup_page(page):
+    window = page.window
+    window.height = 360
+    window.width = 180
+    window.resizable = False
+    window.maximizable = False
+    window.minimizable = False
+    window.always_on_top = True
+    window.title_bar_hidden = True
+    window.frameless = True
+
+    font = 'Comfortaa'
+    page.fonts = {font: '/fonts/Comfortaa.ttf'}
+    page.theme = Theme(font_family='Comfortaa',
+                       shadow_color=Colors.BLACK,
+                       icon_theme=IconTheme(
+                           color=Colors.WHITE
+                       ),
+                       )
+    page.padding = 0
+    page.spacing = 0
+
+    window.bgcolor = Colors.TRANSPARENT
+    page.bgcolor = Colors.TRANSPARENT
 
 
-# Press the green button in the gutter to run the script.
-if __name__ == '__main__':
-    print_hi('PyCharm')
+def main(page: Page):
+    setup_page(page)
 
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+    card = Card()
+    circle = Circle()
+    color_name = ColorName()
+    color_description = ColorDescription()
+    start_button = StartButton()
+    saved_button = SavedButton()
+    close_button = CloseButton(page)
+
+    start_page = Stack(
+        controls=[
+            card,
+            circle,
+            Column(
+                controls=[color_name,
+                          color_description],
+                top=135,
+                spacing=10,
+                horizontal_alignment=CrossAxisAlignment.CENTER,
+            ),
+            close_button,
+            start_button,
+            saved_button,
+        ],
+        alignment=Alignment(0, 0)
+    )
+
+    page.add(WindowDragArea(content=start_page,
+                            maximizable=False))
+
+
+app(target=main, assets_dir="assets")

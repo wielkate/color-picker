@@ -13,7 +13,7 @@ class Card(Container):
                                                ],
                                        begin=alignment.top_center,
                                        end=alignment.bottom_center,
-                                       stops=[0.0, 0.4, 0.7, 1.0])
+                                       stops=[0.0, 0.5, 0.7, 1.0])
         self.border = Border(
             top=BorderSide(
                 width=1,

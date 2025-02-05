@@ -11,8 +11,8 @@ class CloseButton(IconButton):
         self.icon = Icons.CLOSE_ROUNDED
         self.icon_color = Colors.WHITE
         self.icon_size = 14
-        self.top = 10
-        self.right = 10
+        self.top = 7
+        self.right = 7
         self.tooltip = Tooltip(message="Zamknij aplikację", bgcolor=Colors.BLACK, border_radius=15,
                                wait_duration=Duration(milliseconds=500))
         self.on_click = lambda e: close_button_clicked(page)

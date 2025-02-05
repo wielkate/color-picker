@@ -4,9 +4,9 @@ from flet import *
 class Circle(Container):
     def __init__(self):
         super().__init__()
-        self.width = 80
-        self.height = 80
-        self.top = 40
+        self.width = 70
+        self.height = 70
+        self.top = 50
         self.bgcolor = Colors.GREY
         self.border_radius = 360
         self.shadow =BoxShadow(

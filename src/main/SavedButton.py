@@ -13,7 +13,7 @@ class SavedButton(FilledButton):
         self.bottom = 10
         self.content = Column(
             [
-                Icon(name=Icons.BOOKMARK_BORDER_ROUNDED, size=24),
+                Icon(name=Icons.BOOKMARK_BORDER_ROUNDED, size=22),
                 Text("Zapisane", size=12, color=Colors.WHITE, weight=FontWeight.W_100)
             ],
             horizontal_alignment=CrossAxisAlignment.CENTER,
@@ -24,7 +24,7 @@ class SavedButton(FilledButton):
                                wait_duration=Duration(milliseconds=500))
         self.bgcolor = Colors.TRANSPARENT
         self.style = ButtonStyle(
-            padding=26,
+            padding=25,
             shape=CircleBorder()
         )
         self.on_hover = button_hovered

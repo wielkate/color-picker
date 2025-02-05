@@ -1,12 +1,22 @@
+import csv
+import time
+
 from flet import *
 
+from Card import Card
 from Circle import Circle
+from CloseButton import CloseButton
+from ColorData import ColorData
 from ColorDescription import ColorDescription
 from ColorName import ColorName
-from Card import Card
-from StartButton import StartButton
+from HelpButton import HelpButton
 from SavedButton import SavedButton
-from CloseButton import CloseButton
+from StartButton import StartButton
+
+
+def get_color_data():
+    file = open(file='Colors.csv', mode='r', encoding='utf-8')
+    return [ColorData(row) for row in csv.reader(file, delimiter=';')]
 
 
 def setup_page(page):
@@ -45,6 +55,7 @@ def main(page: Page):
     start_button = StartButton()
     saved_button = SavedButton()
     close_button = CloseButton(page)
+    help_button = HelpButton()
 
     start_page = Stack(
         controls=[
@@ -58,6 +69,7 @@ def main(page: Page):
                 horizontal_alignment=CrossAxisAlignment.CENTER,
             ),
             close_button,
+            help_button,
             start_button,
             saved_button,
         ],
@@ -66,6 +78,12 @@ def main(page: Page):
 
     page.add(WindowDragArea(content=start_page,
                             maximizable=False))
+
+    for i in get_color_data():
+        color_name.update_name(i.name)
+        color_description.update_description(i.description)
+        circle.update_color(i.hex)
+        time.sleep(1)
 
 
 app(target=main, assets_dir="assets")

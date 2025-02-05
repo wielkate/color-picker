@@ -8,8 +8,7 @@ def __get_text__(text) -> Text:
 class ColorDescription(Container):
     def __init__(self):
         super().__init__()
-        self.content = __get_text__(
-            "Naciśnij << Start >> i wybierz kolor z dowolnego miejsca na ekranie. Kliknięcie myszką zapisze wybrany kolor")
+        self.content = __get_text__("Po instrukcję naciśnij << ? >> w prawym górnym rogu")
         self.width = 180
         self.padding = padding.symmetric(horizontal=15)
 
